@@ -1,7 +1,6 @@
 package com.careeragent.profile.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -66,21 +65,10 @@ public class Profile {
     @Column(length = 500)
     private String portfolioUrl;
 
-   @Column(nullable = false, updatable = false)
-    private LocalDateTime createdDate;
+    @Column(name = "created_date", updatable = false)
+    LocalDateTime CreatedDate;
 
-   @Column(nullable = false)
-    private LocalDateTime updatedDate;
-
-    @PrePersist
-    public void onCreate() {
-        createdDate = LocalDateTime.now();
-        updatedDate = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    public void onUpdate() {
-        updatedDate = LocalDateTime.now();
-    }
+    @Column(name = "updated_date", updatable = false)
+    LocalDateTime updatedDate;
 
 }
